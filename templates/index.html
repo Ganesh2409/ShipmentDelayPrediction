@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delivery Delay Prediction</h1>
+        <form method="POST" action="/">
+            
+            <!-- Origin -->
+            <label for="shipment_id">Shipment ID:</label>
+            <input type="text" id="shipment_id" name="shipment_id" required><br><br>
+
+            
+            <label for="origin">Origin:</label>
+            <select id="origin" name="origin" required>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+            </select><br><br>
+
+            <!-- Destination -->
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Hyderabad">Hyderabad</option>
+            </select><br><br>
+
+            <!-- Shipment Date -->
+            <label for="shipment_date">Shipment Date:</label>
+            <input type="date" id="shipment_date" name="shipment_date" required><br><br>
+
+            <!-- Planned Delivery Date -->
+            <label for="planned_delivery_date">Planned Delivery Date:</label>
+            <input type="date" id="planned_delivery_date" name="planned_delivery_date" required><br><br>
+
+            <!-- Actual Delivery Date
+            <label for="actual_delivery_date">Actual Delivery Date:</label>
+            <input type="date" id="actual_delivery_date" name="actual_delivery_date" required><br><br> -->
+
+            <!-- Vehicle Type -->
+            <label for="vehicle_type">Vehicle Type:</label>
+            <select id="vehicle_type" name="vehicle_type" required>
+                <option value="Trailer">Trailer</option>
+                <option value="Truck">Truck</option>
+                <option value="Container">Container</option>
+                <option value="Lorry">Lorry</option>
+                <option value="nan">Unknown</option>
+            </select><br><br>
+
+            <!-- Distance -->
+            <label for="distance">Distance (km):</label>
+            <input type="number" id="distance" name="distance" required><br><br>
+
+            <!-- Weather Conditions -->
+            <label for="weather_conditions">Weather Conditions:</label>
+            <select id="weather_conditions" name="weather_conditions" required>
+                <option value="Rain">Rain</option>
+                <option value="Storm">Storm</option>
+                <option value="Clear">Clear</option>
+                <option value="Fog">Fog</option>
+            </select><br><br>
+
+            <!-- Traffic Conditions -->
+            <label for="traffic_conditions">Traffic Conditions:</label>
+            <select id="traffic_conditions" name="traffic_conditions" required>
+                <option value="Heavy">Heavy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Light">Light</option>
+                <option value="Clear">Clear</option>
+            </select><br><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
